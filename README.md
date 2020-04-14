@@ -1,14 +1,12 @@
-# Lab 7: Using the Elastic Stack to study scraped data from a web page
+# Lab session #8: Advanced Analytics as a Service in the Cloud
 
-In this lab we used [Scrapy](https://scrapy.org/) to collect data from The New York Times and IMDb website, and uploaded it into [Elasticsearch](https://www.elastic.co/elasticsearch/) to conduct analysis using [Kibana](https://www.elastic.co/kibana/). We analyzed actors that played a role in 80's films and their longevity. In the end, we presented a dashboard with visualizations that helped us in the analysis process.
+In this lab we use Google Cloud Platform in order to take advantage of the numerous analytical APIS already implemented by that platform. 
 
 ## Group Information
 * Candela Caceres, Julio Christians (julio.christians.candela@est.fib.upc.edu)
 * Maatouk, Karim (fabricio.ferreira.da.silva@est.fib.upc.edu)
 
-## Task 7.1: Extract selected information from a newspaper webpage
-
-To execute this task we also had to install unidecode:
+## Task 8.1: Google Cloud Vision
 
 ```sh
 pip install unidecode
