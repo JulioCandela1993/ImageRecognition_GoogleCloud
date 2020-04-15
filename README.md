@@ -47,7 +47,7 @@ python label.py Lab10-Tweet-MN.png
 
 The result shows that the image is principally related to Technology, Font, Engineering, Electronic device and cable management which is almost correct. A great advantage is that we don't have to code complex algorithms, we only have to use what is working fine!
 
-![8.1.2](Images/8.2.InitialTest.PNG)
+![8.1.2](Images/8.3.InitialTest.PNG)
 
 
 
