@@ -41,7 +41,7 @@ Additionally, we need to create an environmental variable which will contain the
 
 In this section, we are going to test the Cloud Vision service with a demo image extracted from twitter. We have to execute the python script with the image path as an argument.
 
-```
+```python
 python label.py Lab10-Tweet-MN.png
 ```
 
@@ -49,5 +49,19 @@ The result shows that the image is principally related to Technology, Font, Engi
 
 ![8.1.2](Images/8.3.InitialTest.PNG)
 
+#### 8.3.4 Classify images
+
+This section of the lab consists on scraping images from a website related to a topic of our preference and analyze it using Cloud Vision API in order to get insights about the topic's profile and content. For this purpose, we decided to find information about our favorite topic __Peru__
+
+Since we had some problems scrapping from Twitter and Pinterest, we decided to use the following website full of images: [gettyimages.es](https://www.gettyimages.es/fotos/peru?mediatype=photography&phrase=peru&sort=mostpopular)
 
 
+
+#### Q81: What problems have you found developing this section? How did you solve them?
+
+Firstly, when we tried to create a Google Account, we had problems to validate our credit cards. Google accounts doesn't accept prepaid cards. We had to change to other mean of payment.
+
+Moreover, we tried to scrap images from Twitter or Pinterest with the __scrapy__ library, but we found problems since the "scrapy robots" were blocked because we didn't have the authorization. In the case of twitter, we should preferably use the library we learned at the begining of the course __tweepy__ or __twitterscraper__ .  At the end, we decided to scrap from a different website to ease the process.
+ 
+
+#### Q82: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?
