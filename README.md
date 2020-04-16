@@ -53,7 +53,7 @@ The result shows that the image is principally related to Technology, Font, Engi
 
 This section of the lab consists on scraping images from a website related to a topic of our preference and analyze it using Cloud Vision API in order to get insights about the topic's profile and content. For this purpose, we decided to find information about our favorite topic __Peru__
 
-Since we had some problems scrapping from Twitter and Pinterest, we decided to use the following website full of images: [gettyimages.es](https://www.gettyimages.es/fotos/peru?mediatype=photography&phrase=peru&sort=mostpopular). This link shows the pictures of __Peru__ ordered by the most popular, so it will let us analyze which is the main concept that tourist will get when they look for images about Peru.
+Since we had some problems scrapping from Twitter and Pinterest, we decided to use the following website full of images: [gettyimages.es](https://www.gettyimages.es/fotos/peru?mediatype=photography&phrase=peru&sort=mostpopular). This link shows images from __Peru__ ordered by the most popular, so it will let us analyze which is the main concept that tourists will get when they look for images about Peru. This information is mainly important for the Tourism department since it will give hints about the current advertisement of [Marca Perú](https://peru.info/es-pe/) and how to improve the forthcoming productions.
 
 
 
