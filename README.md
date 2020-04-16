@@ -61,7 +61,7 @@ The following is an example of an image that can be found in that website:
 
 The script [ImageAnalyzer.py](https://github.com/JulioCandela1993/CLOUD-COMPUTING-CLASS-2020-Lab8/blob/master/ImageAnalyzer.py) has the following steps:
 
-1. Initialize the service to connect to Cloud Vision API. The credentials have been set in the previous step. In addition, it creates the counter __i__ in order to stop scrapping when we get the __most popular__ 100 images.
+1. Initialize two public variables from the class. First, the service to connect to Cloud Vision API; the credentials were set in the previous step. In addition, it creates the counter __i__ in order to stop scrapping when we get the __most popular__ 100 images.
 
 ```python
 service = googleapiclient.discovery.build('vision', 'v1')
@@ -106,6 +106,75 @@ for matrix_images in response.css(".search-content__gallery-assets"):
             next_page = response.css('.search-pagination__button--next::attr("href")').extract_first()
             print(next_page)
             yield response.follow(next_page, callback=self.parse)
+```
+
+2.1. Inside this process, we get the url from the image in the following line:
+
+```python
+				url = img_div.css('img::attr(src)').extract_first()
+```
+
+2.2. Then, we directly get the image from the url for the analysis (we don't need to download it to local disk)
+
+```python
+				img_b64 = base64.b64encode(requests.get(url).content)
+```
+
+2.3. With the image in base64, we can use the cloud vision API to execute the analysis:
+
+```python
+				service_request = self.service.images().annotate(body={
+									'requests': [{
+										'image': {
+											'content': img_b64.decode('UTF-8')
+										},
+										'features': [{
+											'type': 'LABEL_DETECTION',
+											'maxResults': 5
+										}]
+									}]
+								})
+					
+								analytics_result = service_request.execute()
+```
+
+2.4. After getting the 5 best tags for the current image, we are going to store the results in a dict structure.
+
+```python
+				tags = {}
+				for result in analytics_result['responses'][0]['labelAnnotations']:
+					tags.update({result['description']:result['score']})
+```
+
+2.5. Having the results, we can store the url for validation in addition to the tags in our final json:
+
+```python
+                yield {
+                    'url': url,
+                    'tags':tags
+                }
+```
+
+2.6. Finally, since we realize that we only had 61 images in the first page, we found the button class and href of the next page and recursively iterate our parse function until we get 100 images:
+
+```python
+            next_page = response.css('.search-pagination__button--next::attr("href")').extract_first()
+            print(next_page)
+            yield response.follow(next_page, callback=self.parse)
+```
+
+#### The json result for the first image shown before depicts accurately many of its elements. The llama and Guanaco are animals from highlands, specifically that part of Peru, and Grassland, Highland, Pasture which is part of Machu Pichu landscape.
+
+```python
+{
+	"url": "https://media.gettyimages.com/photos/llamas-at-first-light-at-machu-picchu-peru-picture-id542826216?k=6&m=542826216&s=612x612&w=0&h=DWrw_k_v-JDmiD0IkFZNhson7DC0POuYN7Yk3fvKKFw=", 
+	"tags": {
+		"Llama": 0.97559595, 
+		"Grassland": 0.9568711, 
+		"Highland": 0.9516637, 
+		"Pasture": 0.93164486, 
+		"Guanaco": 0.9235504}
+},
 ```
 
 #### Q81: What problems have you found developing this section? How did you solve them?
