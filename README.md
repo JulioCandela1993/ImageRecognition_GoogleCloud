@@ -187,3 +187,7 @@ Moreover, we tried to scrap images from Twitter or Pinterest with the __scrapy__
  
 
 #### Q82: How long have you been working on this session? What have been the main difficulties you have faced and how have you solved them?
+
+This lab took aproximately 6 hours. Some of the difficulties we had were described in the previous question, but we actually didn't face any big problem.
+
+We consider it was an entertaining and interesting application of Machine Learning ÁPIs in overall. Moreover, Google has a huge collection of these APIs which can be applied with surprising and accurate results.
