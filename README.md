@@ -29,7 +29,7 @@ In order to harness the benefits of Google Cloud Platform for Computer Vision we
 The first step is to download the python scripts from the reposiroty: https://github.com/CCBDA-UPC/google-cloud-vision-example.git cloud-vision
 As soon as we have the scripts, we can activate the python environment and add all the libraries required to manage google services. The file requirements includes all the python libraries
 
-```
+```python
 pip install -r requirements.txt
 ```
 
@@ -58,6 +58,55 @@ Since we had some problems scrapping from Twitter and Pinterest, we decided to u
 The following is an example of an image that can be found in that website:
 
 ![Example](https://media.gettyimages.com/photos/llamas-at-first-light-at-machu-picchu-peru-picture-id542826216?k=6&m=542826216&s=612x612&w=0&h=DWrw_k_v-JDmiD0IkFZNhson7DC0POuYN7Yk3fvKKFw=)
+
+The script [ImageAnalyzer.py](https://github.com/JulioCandela1993/CLOUD-COMPUTING-CLASS-2020-Lab8/blob/master/ImageAnalyzer.py) has the following steps:
+
+1. Initialize the service to connect to Cloud Vision API. The credentials have been set in the previous step. In addition, it creates the counter __i__ in order to stop scrapping when we get the __most popular__ 100 images.
+
+```python
+service = googleapiclient.discovery.build('vision', 'v1')
+i=0
+```
+
+2. Scrap urls from the website until we finally get 100 images:
+
+```python
+for matrix_images in response.css(".search-content__gallery-assets"):
+            for img_div in matrix_images.css('article'):
+                url = img_div.css('img::attr(src)').extract_first()
+                img_b64 = base64.b64encode(requests.get(url).content)
+                service_request = self.service.images().annotate(body={
+                    'requests': [{
+                        'image': {
+                            'content': img_b64.decode('UTF-8')
+                        },
+                        'features': [{
+                            'type': 'LABEL_DETECTION',
+                            'maxResults': 5
+                        }]
+                    }]
+                })
+    
+                analytics_result = service_request.execute()
+                print("Results for image %s:" % url)
+                tags = {}
+                for result in analytics_result['responses'][0]['labelAnnotations']:
+                    tags.update({result['description']:result['score']})
+                    print("%s - %.3f" % (result['description'], result['score']))
+                yield {
+                    'url': url,
+                    'tags':tags
+                }
+                self.i=self.i+1
+                if self.i >=100:
+                    break
+            if self.i >=100:
+                break
+            print('Here')
+            next_page = response.css('.search-pagination__button--next::attr("href")').extract_first()
+            print(next_page)
+            yield response.follow(next_page, callback=self.parse)
+```
 
 #### Q81: What problems have you found developing this section? How did you solve them?
 
