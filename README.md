@@ -111,56 +111,56 @@ for matrix_images in response.css(".search-content__gallery-assets"):
 2.1. Inside this process, we get the url from the image in the following line:
 
 ```python
-		url = img_div.css('img::attr(src)').extract_first()
+	url = img_div.css('img::attr(src)').extract_first()
 ```
 
 2.2. Then, we directly get the image from the url for the analysis (we don't need to download it to local disk)
 
 ```python
-		img_b64 = base64.b64encode(requests.get(url).content)
+	img_b64 = base64.b64encode(requests.get(url).content)
 ```
 
 2.3. With the image in base64, we can use the cloud vision API to execute the analysis:
 
 ```python
-		service_request = self.service.images().annotate(body={
-							'requests': [{
-								'image': {
-									'content': img_b64.decode('UTF-8')
-								},
-								'features': [{
-									'type': 'LABEL_DETECTION',
-									'maxResults': 5
-								}]
+	service_request = self.service.images().annotate(body={
+						'requests': [{
+							'image': {
+								'content': img_b64.decode('UTF-8')
+							},
+							'features': [{
+								'type': 'LABEL_DETECTION',
+								'maxResults': 5
 							}]
-						})
-			
-						analytics_result = service_request.execute()
+						}]
+					})
+		
+					analytics_result = service_request.execute()
 ```
 
 2.4. After getting the 5 best tags for the current image, we are going to store the results in a dict structure.
 
 ```python
-		tags = {}
-		for result in analytics_result['responses'][0]['labelAnnotations']:
-			tags.update({result['description']:result['score']})
+	tags = {}
+	for result in analytics_result['responses'][0]['labelAnnotations']:
+		tags.update({result['description']:result['score']})
 ```
 
 2.5. Having the results, we can store the url for validation in addition to the tags in our final json:
 
 ```python
-		yield {
-			'url': url,
-			'tags':tags
-		}
+	yield {
+		'url': url,
+		'tags':tags
+	}
 ```
 
 2.6. Finally, since we realize that we only had 61 images in the first page, we found the button class and href of the next page and recursively iterate our parse function until we get 100 images:
 
 ```python
-	next_page = response.css('.search-pagination__button--next::attr("href")').extract_first()
-	print(next_page)
-	yield response.follow(next_page, callback=self.parse)
+next_page = response.css('.search-pagination__button--next::attr("href")').extract_first()
+print(next_page)
+yield response.follow(next_page, callback=self.parse)
 ```
 
 #### The json result for the first image shown before depicts accurately many of its elements:
