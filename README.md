@@ -53,7 +53,9 @@ The result shows that the image is principally related to Technology, Font, Engi
 
 This section of the lab consists on scraping images from a website related to a topic of our preference and analyze it using Cloud Vision API in order to get insights about the topic's profile and content. For this purpose, we decided to find information about our favorite topic __Peru__
 
-Since we had some problems scrapping from Twitter and Pinterest, we decided to use the following website full of images: [gettyimages.es](https://www.gettyimages.es/fotos/peru?mediatype=photography&phrase=peru&sort=mostpopular). This link shows images from __Peru__ ordered by the __most popular__, so it will let us analyze which is the main concept that tourists will get when they look for images about Peru. This information is mainly important for the Tourism department since it will give hints about the current advertisement of [Marca Perú](https://peru.info/es-pe/) and how to improve the forthcoming productions. An example of an image that can be found there is:
+Since we had some problems scrapping from Twitter and Pinterest, we decided to use the following website full of images: [gettyimages.es](https://www.gettyimages.es/fotos/peru?mediatype=photography&phrase=peru&sort=mostpopular). This link shows images from __Peru__ ordered by the __most popular__, so it will let us analyze which is the main concept that tourists will get when they look for images about Peru. This information is mainly important for the Tourism department since it will give hints about the current advertisement of [Marca Perú](https://peru.info/es-pe/) and how to improve the forthcoming productions. 
+
+The following is an example of an image that can be found in that website:
 
 ![Example](https://media.gettyimages.com/photos/llamas-at-first-light-at-machu-picchu-peru-picture-id542826216?k=6&m=542826216&s=612x612&w=0&h=DWrw_k_v-JDmiD0IkFZNhson7DC0POuYN7Yk3fvKKFw=)
 
