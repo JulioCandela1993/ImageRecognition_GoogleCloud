@@ -163,7 +163,7 @@ print(next_page)
 yield response.follow(next_page, callback=self.parse)
 ```
 
-#### The json result for the first image shown before depicts accurately many of its elements:
+#### The json result for the first image shown before accurately interpret many of its elements:
 - The llama and Guanaco are similar animals from highlands, specifically that part of Peru.
 - Grassland, Highland, Pasture which is part of Machu Pichu landscape.
 
