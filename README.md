@@ -164,6 +164,25 @@ yield response.follow(next_page, callback=self.parse)
 ```
 
 
+
+#### The json result for the first image shown before accurately interpret many of its elements:
+- The llama and Guanaco are similar animals from highlands, specifically that part of Peru.
+- Grassland, Highland, Pasture which are characteristics of Machu Pichu landscape.
+
+```python
+{
+	"url": "https://media.gettyimages.com/photos/llamas-at-first-light-at-machu-picchu-peru-picture-id542826216?k=6&m=542826216&s=612x612&w=0&h=DWrw_k_v-JDmiD0IkFZNhson7DC0POuYN7Yk3fvKKFw=", 
+	"tags": {
+		"Llama": 0.97559595, 
+		"Grassland": 0.9568711, 
+		"Highland": 0.9516637, 
+		"Pasture": 0.93164486, 
+		"Guanaco": 0.9235504}
+},
+```
+
+
+### Visualizing the Results
 4.1. To analyze what Google Cloud Vision thinks of the images we scraped from the website, we parse the ImageAnalyzer.json file. 
 We are mainly interested in two things: Tags and Accuracy assigned to those tags.
 
@@ -217,26 +236,8 @@ we create the following visualizations :
 
 
 
-
-
 4.4.2 Histogram : Top 15 tags assigned by Google Cloud Vision 
 ![8.4.1](Images/8.4.1.histogram.png)
-
-#### The json result for the first image shown before accurately interpret many of its elements:
-- The llama and Guanaco are similar animals from highlands, specifically that part of Peru.
-- Grassland, Highland, Pasture which are characteristics of Machu Pichu landscape.
-
-```python
-{
-	"url": "https://media.gettyimages.com/photos/llamas-at-first-light-at-machu-picchu-peru-picture-id542826216?k=6&m=542826216&s=612x612&w=0&h=DWrw_k_v-JDmiD0IkFZNhson7DC0POuYN7Yk3fvKKFw=", 
-	"tags": {
-		"Llama": 0.97559595, 
-		"Grassland": 0.9568711, 
-		"Highland": 0.9516637, 
-		"Pasture": 0.93164486, 
-		"Guanaco": 0.9235504}
-},
-```
 
 #### Q81: What problems have you found developing this section? How did you solve them?
 
