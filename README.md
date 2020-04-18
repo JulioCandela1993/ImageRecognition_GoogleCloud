@@ -230,13 +230,13 @@ The above code performs the following:
 4.4. After inserting the [keywords,accuracies] pairs into Kibana , we can create visualizations and analyze the respective visualizations. Therefore, 
 we create the following visualizations : 
 
-4.4.1  Tag Cloud : Most popular tags assigned by Google Cloud Vision 
+4.4.1 **Tag Cloud : Most popular tags assigned by Google Cloud Vision **
 
 ![8.4.1](Images/8.4.1.wordCloud.png)
 
 
 
-4.4.2 Histogram : Top 15 tags assigned by Google Cloud Vision 
+4.4.2 **Histogram : Top 15 tags assigned by Google Cloud Vision** 
 ![8.4.1](Images/8.4.1.histogram.png)
 
 #### Q81: What problems have you found developing this section? How did you solve them?
