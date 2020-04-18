@@ -213,14 +213,14 @@ we create the following visualizations :
 
 4.4.1  Tag Cloud : Most popular tags assigned by Google Cloud Vision 
 
-![8.4.1](Images/8.4.1.wordCloud.PNG)
+![8.4.1](Images/8.4.1.wordCloud.png)
 
 
 
 
 
 4.4.2 Histogram : Top 15 tags assigned by Google Cloud Vision 
-![8.4.1](Images/8.4.1.histogram.PNG)
+![8.4.1](Images/8.4.1.histogram.png)
 
 #### The json result for the first image shown before accurately interpret many of its elements:
 - The llama and Guanaco are similar animals from highlands, specifically that part of Peru.
