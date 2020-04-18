@@ -163,6 +163,65 @@ print(next_page)
 yield response.follow(next_page, callback=self.parse)
 ```
 
+
+4.1. To analyze what Google Cloud Vision thinks of the images we scraped from the website, we parse the ImageAnalyzer.json file. 
+We are mainly interested in two things: Tags and Accuracy assigned to those tags.
+
+4.2. To better analyze, we visualize the tags from the 100 images. For that we use `Kibana tool` from Elastic Search that we previously used in Lab7. 
+
+4.3. The code `ImageVisualizer.py` to parse the json file and load the tags data to `Kibana` is as follows: 
+
+```
+import json
+import os
+import uuid
+
+from elasticsearch import Elasticsearch
+from pip._vendor import certifi
+
+# Establish connection to Elastic Cloud
+ELASTIC_API_URL = os.environ['ELASTIC_API_URL']
+ELASTIC_API_USERNAME = os.environ['ELASTIC_API_USERNAME']
+ELASTIC_API_PASSWORD = os.environ['ELASTIC_API_PASSWORD']
+
+es = Elasticsearch([ELASTIC_API_URL],
+                   http_auth=(ELASTIC_API_USERNAME, ELASTIC_API_PASSWORD),
+                   ca_certs=certifi.where())
+
+with open('ImageAnalyzer.json') as file:
+    json = json.load(file)
+    dict = []
+    for item in json:
+        for tag in item['tags']:
+            es.index(index='cloudvision',
+                     doc_type='tags',
+                     id=uuid.uuid4(),
+                     body={
+                       'tag': tag,
+                       'accuracy': item['tags'][tag]
+                     })
+					 
+```
+
+The above code performs the following: 
+- Parses ImageAnalyzer.Json file
+- Collects the keywords and accuracies predicted by Cloud Vision
+- Inserts the [keyword,accuracy] pairs into Kibana 
+
+4.4. After inserting the [keywords,accuracies] pairs into Kibana , we can create visualizations and analyze the respective visualizations. Therefore, 
+we create the following visualizations : 
+
+4.4.1  Tag Cloud : Most popular tags assigned by Google Cloud Vision 
+
+![8.4.1](Images/8.4.1.wordCloud.PNG)
+
+
+
+
+
+4.4.2 Histogram : Top 15 tags assigned by Google Cloud Vision 
+![8.4.1](Images/8.4.1.histogram.PNG)
+
 #### The json result for the first image shown before accurately interpret many of its elements:
 - The llama and Guanaco are similar animals from highlands, specifically that part of Peru.
 - Grassland, Highland, Pasture which are characteristics of Machu Pichu landscape.
