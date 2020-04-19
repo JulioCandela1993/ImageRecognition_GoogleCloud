@@ -230,7 +230,7 @@ The above code performs the following:
 4.4. After inserting the [keywords,accuracies] pairs into Kibana , we can create visualizations and analyze the respective visualizations. Therefore, 
 we create the following visualizations : 
 
-4.4.1 **Tag Cloud : Most popular tags assigned by Google Cloud Vision**
+4.4.1 **Tag Cloud : Most popular tags assigned by Google Cloud Vision**<br /> 
 In the word cloud below we can visualize the tags assigned to the pictures by Google Cloud Vision. 
 
 The tags mostly assigned are  : `Mountainous Landforms`, `Mountain`, `Landmark`, `Highland`, `Nature`, `llama`, `Sky`. 
@@ -240,7 +240,7 @@ The tags assigned make sense since most of the images scraped from the website c
 
 
 
-4.4.2 **Histogram : Top 15 tags assigned by Google Cloud Vision** 
+4.4.2 **Histogram : Top 15 tags assigned by Google Cloud Vision**<br /> 
 Below we visualize a histogram of the top 15 tags assigned by google cloud vision to the images scraped from the website. 
 The most assigned tag `Mountainous Landforms` appeared in 30 images followed by `Mountain` that appeared in 25 images. 
 It is probable that the both tags are assigned almost to the same images. 
