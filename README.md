@@ -231,12 +231,21 @@ The above code performs the following:
 we create the following visualizations : 
 
 4.4.1 **Tag Cloud : Most popular tags assigned by Google Cloud Vision**
+In the word cloud below we can visualize the tags assigned to the pictures by Google Cloud Vision. 
 
+The tags mostly assigned are  : `Mountainous Landforms`, `Mountain`, `Landmark`, `Highland`, `Nature`, `llama`, `Sky`. 
+
+The tags assigned make sense since most of the images scraped from the website correspond to nature,  in particular images from the famous Machu Picchu landmark.
 ![8.4.1](Images/8.4.1.wordCloud.png)
 
 
 
 4.4.2 **Histogram : Top 15 tags assigned by Google Cloud Vision** 
+Below we visualize a histogram of the top 15 tags assigned by google cloud vision to the images scraped from the website. 
+The most assigned tag `Mountainous Landforms` appeared in 30 images followed by `Mountain` that appeared in 25 images. 
+It is probable that the both tags are assigned almost to the same images. 
+Taking another look at `ImageAnalyzer.json` , we notice that `Mountains` always appears with `Mountainous Landforms`; however, with an accuracy less than it although
+there is not any difference in meaning between the two words.  
 ![8.4.1](Images/8.4.1.histogram.png)
 
 #### Q81: What problems have you found developing this section? How did you solve them?
